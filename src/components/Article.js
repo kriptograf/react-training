@@ -10,21 +10,25 @@ class Article extends Component{
 
     //Экспериментальный синтаксис
     state = {
-        isOpen: false
+        isOpen: true
     }
 
     //Обязательный метод
     render(){
         const {article} = this.props
-        const body = this.state.isOpen && <section>{article.text}</section>
+        const body = this.state.isOpen && <section className="card-text some">{article.text}</section>
         return (
-            <div className='hello'>
-                <h2>
-                    {article.title}
-                    <button onClick={this.handleClose}>{this.state.isOpen ? 'close' : 'open'}</button>
-                </h2>
-                {body}
-                <h4>created: {(new Date(article.date)).toDateString()}</h4>
+            <div className='card'>
+                <div className="card-header">
+                    <h2>
+                        {article.title}
+                        <button className="btn btn-info btn-xs float-right" onClick={this.handleClose}>{this.state.isOpen ? <i className="fa fa-minus"></i> : <i className="fa fa-plus"></i>}</button>
+                    </h2>
+                </div>
+               <div className="card-body">
+                    <h6 className="card-subtitle text-muted">Created: {(new Date(article.date)).toDateString()}</h6>
+                    {body}
+               </div>
             </div>
         )
     }
