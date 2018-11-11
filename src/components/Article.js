@@ -16,7 +16,7 @@ class Article extends Component{
     //Обязательный метод
     render(){
         const {article} = this.props
-        const body = this.state.isOpen && <section className="card-text some">{article.text}</section>
+        const body = this.state.isOpen && <section className="card-text some">{article.body}</section>
         return (
             <div className='card'>
                 <div className="card-header">
@@ -26,7 +26,7 @@ class Article extends Component{
                     </h2>
                 </div>
                <div className="card-body">
-                    <h6 className="card-subtitle text-muted">Created: {(new Date(article.date)).toDateString()}</h6>
+                    <p className="card-subtitle text-muted">Created: {(new Date(article.created_at)).toDateString()}</p>
                     {body}
                </div>
             </div>
